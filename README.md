@@ -23,4 +23,6 @@ Revisa mi pagina haciendo click aqui! -> https://roycontrol.cl/ferremax/index.ph
 - HTML5
 - CSS3
 - JS
+- PHP
+- SQL
 ---
