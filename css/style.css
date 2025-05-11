@@ -1,125 +1,151 @@
-/* Reset básico */
+/* ============================
+   RESET BÁSICO
+   - Eliminamos márgenes y paddings por defecto
+   - Ajustamos box-sizing para incluir padding y border en ancho/alto
+   ============================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #333;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  /* HEADER */
-  .site-header {
-    background-color: #ae9701;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
-  .site-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .logo img {
-    height: 50px; /* ajusta según tu logo */
-  }
-  
-  .main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .main-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-  }
-  
-  .main-nav a:hover {
-    color: #ffcc00;
-  }
-  
-  /* MAIN */
-  main {
-    padding: 2rem 0;
-  }
-  
-  /* Hero */
-  .hero {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  .hero h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    color: #555;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Featured Products */
-  .featured-products {
-    padding: 2rem 0;
-  }
-  .featured-products h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-  }
-  .product-card {
-    background: #fff;
-    padding: 1rem;
-    border-radius: 6px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  .product-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 0.5rem;
-  }
-  .product-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-  }
-  .product-card p {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  .product-card .price {
-    font-weight: bold;
-    color: #004d1a;
-    margin: 0 1rem 1rem;
-    font-size: 1.1rem;
-  }
+/* ============================
+   ESTILOS BASE
+   - Fuente global y colores de fondo/texto
+   ============================ */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
 
-  /* Footer */
-  .site-footer {
-    background: #ae9701;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-    margin-top: 2rem;
-  }
+/* ============================
+   CONTENEDOR CENTRAL
+   - Ancho fluido con un máximo, centrado horizontal
+   ============================ */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
 
-/* CONTACTO */
+/* ============================
+   HEADER
+   - Fondo dorado, padding vertical y sombra suave
+   - Flexbox para logo + menú
+   ============================ */
+.site-header {
+  background-color: #ae9701;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo img {
+  height: 50px; /* ajusta según tu logo */
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.main-nav a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.main-nav a:hover {
+  color: #ffcc00;
+}
+
+/* ============================
+   MAIN
+   - Padding general para la sección principal
+   ============================ */
+main {
+  padding: 2rem 0;
+}
+
+/* ============================
+   HERO
+   - Sección de bienvenida centrada
+   ============================ */
+.hero {
+  padding: 4rem 0;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ============================
+   PRODUCTOS DESTACADOS
+   - Título y grid responsivo de tarjetas
+   ============================ */
+.featured-products {
+  padding: 2rem 0;
+}
+.featured-products h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.product-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.product-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.product-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+.product-card .price {
+  font-weight: bold;
+  color: #004d1a;
+  margin: 0 1rem 1rem;
+  font-size: 1.1rem;
+}
+
+/* ============================
+   FOOTER
+   - Mismo fondo del header, texto blanco
+   ============================ */
+.site-footer {
+  background: #ae9701;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ============================
+   CONTACTO
+   - Info blocks: dirección, teléfono, email
+   ============================ */
 .contact-info {
   display: flex;
   flex-wrap: wrap;
@@ -138,7 +164,10 @@
   color: #004d1a;
 }
 
-/* FORMULARIO */
+/* ============================
+   FORMULARIO DE CONTACTO
+   - Layout en grid para los campos
+   ============================ */
 .contact-form {
   background: #fff;
   padding: 2rem;
@@ -167,7 +196,10 @@
   color: #fff;
 }
 
-/* MAPA */
+/* ============================
+   MAPA
+   - Contenedor responsivo para el iframe
+   ============================ */
 .map-container {
   width: 100%;
   height: 350px;
@@ -177,33 +209,109 @@
   margin-bottom: 2rem;
 }
 
-  @media (max-width:700px) {
-    header {
-      width: 100%;
-    }
-    #container-header {
-      display: block;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      text-align: center;
-    }
-  
-    #logo {
-      width: 100%;
-      margin: 0 auto;
-    }
-  
-    .main-nav ul {
-      display:flexbox;
-      text-align: center;
-      margin: 0 auto;
-      gap: 20px;
-      justify-content: center;
-    }
+/* ============================
+   CARRITO
+   - Sidebar oculto/visible y overlay
+   ============================ */
+.carrito-toggle { position: relative; }
+.carrito-toggle .badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+.carrito-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Inicialmente oculto */
+  width: 350px;
+  height: 100%;
+  background-color: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1050;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.carrito-sidebar.activo {
+  right: 0;
+}
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.btn-cerrar {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.carrito-items { margin-bottom: 1rem; }
+.carrito-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.carrito-item-imagen {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+.carrito-item-detalles h4 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.carrito-item-detalles p {
+  font-size: 0.9rem;
+  margin-bottom: 0.1rem;
+}
+.carrito-footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+.carrito-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  display: none;
+}
+.carrito-overlay.activo {
+  display: block;
+}
+
+/* ============================
+   MEDIA QUERY (RESPONSIVE)
+   - Ajustes para pantallas <700px
+   ============================ */
+@media (max-width: 700px) {
+  header {
+    width: 100%;
   }
-
-  
-  
-
-  
+  #container-header {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+  }
+  #logo {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .main-nav ul {
+    display: flexbox;
+    text-align: center;
+    margin: 0 auto;
+    gap: 20px;
+    justify-content: center;
+  }
+}
