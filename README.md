@@ -1,4 +1,4 @@
-Revisa mi pagina haciendo click aqui! -> [https://clownsito.github.io/ferre_max/index.html](https://roycontrol.cl/ferremax/index.php)
+Revisa mi pagina haciendo click aqui! -> https://roycontrol.cl/ferremax/index.php
 
 # 🛠️ Ferre Max
 
