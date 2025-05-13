@@ -6,6 +6,17 @@ session_start(); //Iniciamos sesion
 $sql = "SELECT * FROM inv_productos"; //Consulta sql de la tabla inv_productos
 $sqlquery = mysqli_query($conectar, $sql); //Executamos la consulta 
 
+
+// Si llega ?remove=123, borramos ese producto del carrito
+if (isset($_GET['remove'])) {
+    $codProdEliminar = intval($_GET['remove']); //asegura que sólo números válidos entren en la consulta.
+    $sqlDel = "DELETE FROM carrito WHERE codprod = $codProdEliminar"; //SQL para eliminar el producto seleccionado del carrito
+    mysqli_query($conectar, $sqlDel);
+    // Redirigimos para limpiar la URL y recargar la lista
+    header("Location: index.php");
+    exit();
+}
+
 if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
     $codprod = $_GET['id']; 
 
@@ -90,8 +101,7 @@ if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
                 </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                     <li class="carrito-toggle">
                         <button class="btn btn-warning" id="abrirCarrito">
@@ -114,7 +124,7 @@ if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
         <section class="hero">
             <h2>¡Bienvenido a <em>Ferretería Max</em>!</h2>
             <p>Todo lo que necesitas para tus proyectos de construcción.</p>
-            <a href="productos.html" class="btn btn-warning">Ver Productos</a>
+            <a href="index.php" class="btn btn-warning">Ver Productos</a>
         </section>
 
         <section class="featured-products">
@@ -139,7 +149,7 @@ if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
             </div>
             <div class="carrito-items">
                 <?php
-                $mcarro = "SELECT c.cantidad, c.precio_total_item, p.nombre, p.img FROM carrito c INNER JOIN inv_productos p ON c.codprod = p.codigo";//Selecciona cantidad, precio total del ítem del carrito, nombre e imagen del producto, uniendo las tablas 'carrito' (alias 'c') e 'inv_productos' (alias 'p') por el código del producto.
+                $mcarro = "SELECT c.codprod, c.cantidad, c.precio_total_item, p.nombre, p.img FROM carrito c INNER JOIN inv_productos p ON c.codprod = p.codigo";//Selecciona cantidad, precio total del ítem del carrito, nombre e imagen del producto, uniendo las tablas 'carrito' (alias 'c') e 'inv_productos' (alias 'p') por el código del producto.
                 $mostrarcarro_sidebar = mysqli_query($conectar, $mcarro);
                 while ($row_carrito_sidebar = mysqli_fetch_assoc($mostrarcarro_sidebar)) { //Recorremos la consulta para setear e imprimir los datos.
                     $cantidad_item_sidebar = $row_carrito_sidebar['cantidad'];
@@ -154,6 +164,12 @@ if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
                             <p>Cantidad: <?php echo $cantidad_item_sidebar; ?></p>
                             <p>Total: $ <?php echo number_format($precio_total_item_sidebar, 0, ',', '.'); //Setear precio en pesos chilenos?></p>
                         </div>
+                        <!-- BOTÓN ELIMINAR -->
+                        <a href="index.php?remove=<?php echo $row_carrito_sidebar['codprod']; ?>"
+                           class="btn btn-sm btn-danger"
+                           style="margin-left:auto;">
+                          &times;
+                        </a>
                     </div>
                     <?php
                 } //Terminamos el while
