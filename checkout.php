@@ -60,117 +60,69 @@ while ($row = mysqli_fetch_assoc($resCarrito)) {
   <meta charset="UTF-8" />
   <title>Checkout – Ferretería Max</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Enlazamos nuestro CSS principal -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- HEADER … -->
 
-  <!-- ================================
-       HEADER: mismo que en index.php
-       ================================ -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.php" class="logo">
-        <img src="img/logo.png" alt="Ferretería Max">
-      </a>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.php">Inicio</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="checkout.php" class="active">Checkout</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ================================
-       MAIN: contenido principal
-       ================================ -->
   <main class="container">
     <h2>Resumen de tu pedido</h2>
 
-    <!-- Si el carrito está vacío -->
     <?php if (empty($items)): ?>
-      <p>Tu carrito está vacío. <a href="index.php">Volver a productos</a></p>
-
-    <!-- Si hay ítems, los listamos en una tabla -->
+      <p class="empty-cart">
+        Tu carrito está vacío. <a href="index.php">Volver a productos</a>
+      </p>
     <?php else: ?>
-      <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <table class="checkout-table">
         <thead>
-          <tr style="background: #ae9701; color: #fff;">
-            <!-- Cabeceras de la tabla -->
-            <th style="padding: 0.5rem; text-align:left;">Producto</th>
-            <th style="padding: 0.5rem; text-align:right;">Precio unitario</th>
-            <th style="padding: 0.5rem; text-align:center;">Cantidad</th>
-            <th style="padding: 0.5rem; text-align:right;">Subtotal</th>
-            <th style="padding: 0.5rem;">Eliminar</th>
+          <tr>
+            <th>Producto</th>
+            <th class="right">Precio unitario</th>
+            <th class="center">Cantidad</th>
+            <th class="right">Subtotal</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($items as $item): ?>
-            <tr style="background: #fff; border-bottom: 1px solid #eee;">
-              <!-- Nombre del producto -->
-              <td style="padding: 0.5rem;"><?= htmlspecialchars($item['nombre']) ?></td>
-              <!-- Precio unitario formateado -->
-              <td style="padding: 0.5rem; text-align:right;">
-                $ <?= number_format($item['precio_unitario'],0,',','.') ?>
-              </td>
-              <!-- Cantidad -->
-              <td style="padding: 0.5rem; text-align:center;"><?= $item['cantidad'] ?></td>
-              <!-- Subtotal formateado -->
-              <td style="padding: 0.5rem; text-align:right;">
-                $ <?= number_format($item['precio_total_item'],0,',','.') ?>
-              </td>
-              <!-- Enlace para eliminar ítem -->
-              <td style="padding: 0.5rem; text-align:center;">
-                <a href="checkout.php?remove=<?= $item['codprod'] ?>"
-                   class="btn btn-sm btn-danger">
-                  &times;
-                </a>
-              </td>
-            </tr>
+          <tr>
+            <td><?= htmlspecialchars($item['nombre']) ?></td>
+            <td class="right">$ <?= number_format($item['precio_unitario'],0,',','.') ?></td>
+            <td class="center"><?= $item['cantidad'] ?></td>
+            <td class="right">$ <?= number_format($item['precio_total_item'],0,',','.') ?></td>
+            <td class="center">
+              <a href="checkout.php?remove=<?= $item['codprod'] ?>"
+                 class="btn btn-sm btn-danger">
+                &times;
+              </a>
+            </td>
+          </tr>
           <?php endforeach; ?>
         </tbody>
         <tfoot>
-          <!-- Fila con el total general -->
           <tr>
-            <td colspan="3" style="padding: 0.5rem; text-align:right; font-weight:bold;">
-              Total:
-            </td>
-            <td style="padding: 0.5rem; text-align:right; font-size:1.2rem; font-weight:bold;">
-              $ <?= number_format($total,0,',','.') ?>
-            </td>
+            <td colspan="3" class="right">Total:</td>
+            <td class="right total-cell">$ <?= number_format($total,0,',','.') ?></td>
             <td></td>
           </tr>
         </tfoot>
       </table>
 
-      <!-- Formulario para datos de envío -->
-      <section class="contact-form">
+      <section class="shipping-form">
         <h3>Datos de envío</h3>
         <form action="confirmacion.php" method="post">
-          <!-- Campo Nombre -->
           <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre"
-                 placeholder="Tu nombre" required>
+          <input type="text" id="nombre" name="nombre" required>
 
-          <!-- Campo Dirección -->
           <label for="direccion">Dirección de envío</label>
-          <input type="text" id="direccion" name="direccion"
-                 placeholder="Calle, número" required>
+          <input type="text" id="direccion" name="direccion" required>
 
-          <!-- Campo Ciudad -->
           <label for="ciudad">Ciudad</label>
-          <input type="text" id="ciudad" name="ciudad"
-                 placeholder="Ej: Santiago" required>
+          <input type="text" id="ciudad" name="ciudad" required>
 
-          <!-- Campo Teléfono -->
           <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono"
-                 placeholder="+56 9 1234 5678" required>
+          <input type="tel" id="telefono" name="telefono" required>
 
-          <!-- Botón de envío del pedido -->
           <button type="submit" class="btn">Finalizar compra</button>
         </form>
       </section>
