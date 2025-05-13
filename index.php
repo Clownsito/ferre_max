@@ -96,7 +96,7 @@ if (isset($_GET['id'])) { //Si, id se obtiene por Get entonces...
 <body>
     <header class="site-header">
         <div class="container" id="container-header">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="img/logo.png" alt="Ferretería Max" />
                 </a>
             <nav class="main-nav">
