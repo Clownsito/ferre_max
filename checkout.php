@@ -64,7 +64,19 @@ while ($row = mysqli_fetch_assoc($resCarrito)) {
 </head>
 <body>
   <!-- HEADER … -->
-
+<header class="site-header">
+    <div class="container" id="container-header">
+        <a href="index.php" class="logo">
+            <img src="img/logo.png" alt="Ferretería Max" />
+            </a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
   <main class="container">
     <h2>Resumen de tu pedido</h2>
 
